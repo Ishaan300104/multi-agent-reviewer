@@ -1,0 +1,8 @@
+INFO:     Started server process [13272]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5003 (Press CTRL+C to quit)
+Starting MetaReviewerAgent MCP Server on port 5003
+HTTP: http://localhost:5003
+WebSocket: ws://localhost:5003/ws
+INFO:     127.0.0.1:56559 - "GET /health HTTP/1.1" 200 OK
