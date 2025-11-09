@@ -88,7 +88,7 @@ class ReaderAgent:
         """Extract paper title from text."""
         lines = text.split('\n')
         # Title is usually in the first few lines, longer than other text
-        for i, line in enumerate(lines[:10]):
+        for i, line in enumerate(lines[:15]):
             line = line.strip()
             if len(line) > 20 and len(line) < 200:
                 # Check if next line is not part of title
