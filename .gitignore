@@ -1,0 +1,7 @@
+.env
+.env.example
+__pycache__/
+ARCH.md
+FILE_STRUCTURE.md
+research_note.md
+venv/

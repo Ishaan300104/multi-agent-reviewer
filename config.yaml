@@ -1,0 +1,107 @@
+# Configuration for Multi-Agent Research Paper Reviewer
+
+# Agent Configuration
+agents:
+  reader:
+    port: 5001
+    max_tokens: 4000
+    timeout: 30
+    
+  critic:
+    port: 5002
+    max_tokens: 2000
+    timeout: 20
+    scoring:
+      novelty_weight: 0.25
+      methodology_weight: 0.30
+      clarity_weight: 0.25
+      reproducibility_weight: 0.20
+    
+  meta_reviewer:
+    port: 5003
+    max_tokens: 3000
+    timeout: 25
+    summary_levels:
+      - executive
+      - detailed
+      - eli5
+    
+  cite_agent:
+    port: 5004
+    max_tokens: 1500
+    timeout: 30
+    max_related_papers: 10
+
+# LLM Configuration (Optional)
+llm:
+  provider: "openai"  # Options: openai, anthropic, cohere, local
+  model: "gpt-4"
+  temperature: 0.3
+  max_tokens: 2000
+  api_key: "${OPENAI_API_KEY}"  # Set via environment variable
+
+# ArXiv Configuration
+arxiv:
+  max_results: 10
+  sort_by: "relevance"  # Options: relevance, lastUpdatedDate, submittedDate
+  cache_enabled: true
+  cache_ttl: 3600  # seconds
+  rate_limit: 5  # requests per minute
+
+# PDF Processing
+pdf:
+  max_file_size_mb: 50
+  extract_images: false
+  extract_tables: false
+  preserve_layout: true
+  ocr_enabled: false
+
+# Orchestration
+orchestration:
+  parallel_agents:
+    - critic
+    - cite_agent
+  max_retries: 2
+  retry_delay: 5  # seconds
+  timeout: 120  # seconds
+
+# Data Storage
+data:
+  papers_dir: "data/sample_papers"
+  results_dir: "data/processed"
+  cache_dir: "data/cache"
+  metadata_file: "data/arxiv_metadata.json"
+
+# Evaluation
+evaluation:
+  test_cases_file: "eval/test_cases.json"
+  results_dir: "eval/results"
+  metrics:
+    - success_rate
+    - avg_latency
+    - tool_call_count
+    - constraint_violations
+    - citation_accuracy
+
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  file: "logs/system.log"
+  max_size_mb: 100
+  backup_count: 5
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# UI Configuration
+ui:
+  streamlit:
+    port: 8501
+    theme: "light"
+    page_title: "Research Paper Reviewer"
+    layout: "wide"
+
+# MCP Server Configuration
+mcp:
+  message_timeout: 30
+  max_connections: 10
+  keepalive_interval: 60
+  max_message_size: 10485760  # 10MB

@@ -1,0 +1,163 @@
+{
+  "test_cases": [
+    {
+      "test_id": "test_1",
+      "name": "High Quality ML Paper",
+      "description": "Test review of a well-structured machine learning paper",
+      "input": {
+        "paper_source": "data/sample_papers/ml_paper.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "min_overall_score": 7.0,
+        "required_sections": ["methodology", "results"],
+        "min_references": 20,
+        "max_processing_time": 60
+      },
+      "constraints": {
+        "must_extract_title": true,
+        "must_extract_abstract": true,
+        "must_have_critique": true,
+        "must_have_eli5": true
+      }
+    },
+    {
+      "test_id": "test_2",
+      "name": "Poorly Structured Paper",
+      "description": "Test handling of paper with unclear structure",
+      "input": {
+        "paper_source": "data/sample_papers/poor_structure.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "max_overall_score": 6.0,
+        "min_weaknesses": 2,
+        "max_processing_time": 60
+      },
+      "constraints": {
+        "should_identify_structure_issues": true,
+        "should_provide_recommendations": true
+      }
+    },
+    {
+      "test_id": "test_3",
+      "name": "ArXiv Paper by ID",
+      "description": "Test fetching and reviewing paper from ArXiv",
+      "input": {
+        "paper_source": "2301.00001",
+        "source_type": "arxiv_id"
+      },
+      "expected_outcomes": {
+        "must_download_paper": true,
+        "min_related_papers": 5,
+        "max_processing_time": 90
+      },
+      "constraints": {
+        "must_use_arxiv_api": true,
+        "must_find_citations": true
+      }
+    },
+    {
+      "test_id": "test_4",
+      "name": "Citation-Heavy Paper",
+      "description": "Test citation analysis on paper with many references",
+      "input": {
+        "paper_source": "data/sample_papers/citation_heavy.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "min_references": 50,
+        "min_related_papers": 8,
+        "citation_analysis_required": true,
+        "max_processing_time": 60
+      },
+      "constraints": {
+        "must_extract_all_references": true,
+        "must_analyze_citation_patterns": true
+      }
+    },
+    {
+      "test_id": "test_5",
+      "name": "Short Paper (Workshop)",
+      "description": "Test review of short 4-page workshop paper",
+      "input": {
+        "paper_source": "data/sample_papers/workshop_paper.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "max_page_count": 6,
+        "min_sections": 3,
+        "max_processing_time": 45
+      },
+      "constraints": {
+        "should_handle_short_content": true,
+        "should_adapt_review_length": true
+      }
+    },
+    {
+      "test_id": "test_6",
+      "name": "Multi-Column Layout",
+      "description": "Test extraction from complex two-column layout",
+      "input": {
+        "paper_source": "data/sample_papers/two_column.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "must_preserve_reading_order": true,
+        "min_sections": 4,
+        "max_processing_time": 60
+      },
+      "constraints": {
+        "must_handle_columns": true,
+        "must_extract_equations": false
+      }
+    },
+    {
+      "test_id": "test_7",
+      "name": "Error Handling - Invalid PDF",
+      "description": "Test graceful error handling with corrupted PDF",
+      "input": {
+        "paper_source": "data/sample_papers/corrupted.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "should_fail_gracefully": true,
+        "must_return_error_message": true,
+        "max_processing_time": 30
+      },
+      "constraints": {
+        "must_not_crash": true,
+        "must_provide_helpful_error": true
+      }
+    },
+    {
+      "test_id": "test_8",
+      "name": "End-to-End Performance",
+      "description": "Test complete workflow with all agents",
+      "input": {
+        "paper_source": "data/sample_papers/standard_paper.pdf",
+        "source_type": "pdf"
+      },
+      "expected_outcomes": {
+        "all_agents_must_respond": true,
+        "min_tool_calls": 4,
+        "max_errors": 0,
+        "max_processing_time": 75
+      },
+      "constraints": {
+        "reader_agent_success": true,
+        "critic_agent_success": true,
+        "meta_reviewer_success": true,
+        "cite_agent_success": true
+      }
+    }
+  ],
+  "metrics_definitions": {
+    "success_rate": "Percentage of test cases that pass all constraints",
+    "avg_latency": "Average processing time across all tests in seconds",
+    "tool_call_count": "Total number of tool invocations across all agents",
+    "constraint_violations": "Number of violated constraints",
+    "review_quality_score": "Manual assessment of review quality (1-10)",
+    "citation_accuracy": "Percentage of correctly identified related papers"
+  }
+}
