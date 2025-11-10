@@ -1,6 +1,6 @@
 # Multi-Agent Research Paper Reviewer System
 
-A sophisticated multi-agent system for reviewing, analyzing, and summarizing academic research papers using MCP (Model Context Protocol) architecture.
+A sophisticated LLM-based multi-agent system for reviewing, analyzing, and summarizing academic research papers using MCP (Model Context Protocol) architecture.
 
 ## Architecture Overview
 
@@ -58,14 +58,15 @@ A sophisticated multi-agent system for reviewing, analyzing, and summarizing aca
 ```
 research-paper-reviewer/
 ├── agents/
-│   ├── __init__.py
+│   ├── __init__.py              # I added this to make agent folder run as a module
+|   ├── llm_client.py            # For LLM Integration
 │   ├── reader_agent.py          # PDF extraction & parsing
 │   ├── critic_agent.py          # Critical analysis
 │   ├── meta_reviewer_agent.py   # Review synthesis
 │   ├── cite_agent.py            # Citation & related papers
 │   └── orchestrator.py          # LangGraph workflow
-├── mcp-server/
-│   ├── __init__.py
+├── mcp_server/
+│   ├── __init__.py              # I added this to make mcp_server folder run as a module
 │   ├── base_server.py           # Base MCP server implementation
 │   ├── reader_server.py         # Reader agent MCP server
 │   ├── critic_server.py         # Critic agent MCP server
@@ -73,7 +74,7 @@ research-paper-reviewer/
 │   ├── cite_server.py           # CiteAgent MCP server
 │   └── client.py                # MCP client for orchestration
 ├── data/
-│   ├── sample_papers/           # Sample PDF papers
+│   ├── sample_papers/           # Sample PDF papers (papers get saved when you run it locally)
 │   ├── arxiv_metadata.json      # ArXiv metadata cache
 │   └── processed/               # Processed results
 ├── eval/
@@ -81,18 +82,10 @@ research-paper-reviewer/
 │   ├── run_eval.py              # Evaluation harness
 │   ├── metrics.py               # Metric calculations
 │   └── results/                 # Test results
-├── tools/
-│   ├── __init__.py
-│   ├── pdf_extractor.py         # PDF text extraction
-│   ├── arxiv_api.py             # ArXiv API wrapper
-│   ├── text_analyzer.py         # Text analysis utilities
-│   └── citation_parser.py       # Citation extraction
 ├── ui/
-│   ├── streamlit_app.py         # Main Streamlit interface
-│   └── components.py            # UI components
-├── research_note.md             # 2-3 page research note
-├── ARCH.md                      # Architecture details
+│   └── streamlit_app.py         # Main Streamlit interface
 ├── requirements.txt
+├── config.yaml                   
 ├── README.md
 └── setup.py
 ```
