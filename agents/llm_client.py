@@ -7,6 +7,8 @@ from typing import Dict, Any, List, Optional
 from openai import OpenAI
 import json
 
+from dotenv import load_dotenv
+load_dotenv()
 
 class LLMClient:
     """

@@ -1,8 +1,11 @@
-INFO:     Started server process [4300]
+INFO:     Started server process [8952]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:5004 (Press CTRL+C to quit)
 Starting CiteAgent MCP Server on port 5004
 HTTP: http://localhost:5004
 WebSocket: ws://localhost:5004/ws
-INFO:     127.0.0.1:56561 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51112 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Finished server process [8952]
+INFO:     ASGI 'lifespan' protocol appears unsupported.

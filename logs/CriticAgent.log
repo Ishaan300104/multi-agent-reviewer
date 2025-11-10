@@ -1,8 +1,13 @@
-INFO:     Started server process [10572]
+INFO:     Started server process [19552]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:5002 (Press CTRL+C to quit)
+[LLM] Initialized with model: gpt-4o-mini
+[CriticAgent] LLM integration enabled
 Starting CriticAgent MCP Server on port 5002
 HTTP: http://localhost:5002
 WebSocket: ws://localhost:5002/ws
-INFO:     127.0.0.1:56557 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51108 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Finished server process [19552]
+INFO:     ASGI 'lifespan' protocol appears unsupported.
