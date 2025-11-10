@@ -10,12 +10,26 @@ from typing import Dict, Any, List
 class MetaReviewerAgent:
     """
     Agent responsible for synthesizing reviews and creating student-friendly summaries.
+    Uses LLM for high-quality synthesis when available.
     """
     
-    def __init__(self, agent_id: str = None, llm_client=None):
+    def __init__(self, agent_id: str = None, llm_client=None, use_llm: bool = True):
         self.agent_id = agent_id or f"meta-{uuid.uuid4().hex[:8]}"
         self.name = "MetaReviewerAgent"
-        self.llm_client = llm_client
+        self.use_llm = use_llm
+        
+        # Initialize LLM client if requested
+        if self.use_llm and llm_client is None:
+            try:
+                from llm_client import get_llm_client
+                self.llm_client = get_llm_client()
+                print(f"[{self.name}] LLM integration enabled")
+            except Exception as e:
+                print(f"[{self.name}] LLM not available, using templates: {e}")
+                self.llm_client = None
+                self.use_llm = False
+        else:
+            self.llm_client = llm_client
         
     def generate_review(self, paper_content: Dict[str, Any],
                        critic_analysis: Dict[str, Any],

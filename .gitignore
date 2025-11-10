@@ -4,4 +4,8 @@ __pycache__/
 ARCH.md
 FILE_STRUCTURE.md
 research_note.md
+COMPLETE_SETUP.md
+LLM_INTEGRATION.md
+OPENAI_SETUP.md
+QUICK_START.md
 venv/
