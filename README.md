@@ -101,8 +101,8 @@ research-paper-reviewer/
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd research-paper-reviewer
+git clone https://github.com/Ishaan300104/multi-agent-reviewer.git
+cd multi-agent-reviewer
 ```
 
 2. **Create virtual environment**
@@ -129,6 +129,10 @@ python scripts/download_samples.py
 Start each agent's MCP server in separate terminals:
 
 ```bash
+# Single-go master command
+bash scripts/start_servers.sh
+
+# Optional individual commands
 # Terminal 1: Reader Agent
 python mcp-server/reader_server.py
 
@@ -291,12 +295,6 @@ The system tracks:
 ## Testing
 
 ```bash
-# Run unit tests
-pytest tests/
-
-# Run integration tests
-pytest tests/integration/
-
 # Run end-to-end tests
 python eval/run_eval.py --mode e2e
 ```

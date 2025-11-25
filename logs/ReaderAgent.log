@@ -1,11 +1,12 @@
-INFO:     Started server process [10404]
+INFO:     Started server process [1400]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
 Starting ReaderAgent MCP Server on port 5001
 HTTP: http://localhost:5001
 WebSocket: ws://localhost:5001/ws
-INFO:     127.0.0.1:51106 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54716 - "GET /health HTTP/1.1" 200 OK
 INFO:     Shutting down
-INFO:     Finished server process [10404]
-INFO:     ASGI 'lifespan' protocol appears unsupported.
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1400]

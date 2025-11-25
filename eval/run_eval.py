@@ -12,6 +12,7 @@ import argparse
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'agents'))
 
+# Assuming these modules are correctly available in the agents/ and metrics.py paths
 from orchestrator import ResearchReviewOrchestrator
 from metrics import MetricsCalculator
 
@@ -21,7 +22,7 @@ class EvaluationHarness:
     Runs test cases and computes evaluation metrics.
     """
     
-    def __init__(self, test_cases_file: str = "test_cases.json"):
+    def __init__(self, test_cases_file: str = "eval/test_cases.json"):
         self.test_cases_file = test_cases_file
         self.test_cases = self._load_test_cases()
         self.orchestrator = ResearchReviewOrchestrator()
@@ -30,6 +31,8 @@ class EvaluationHarness:
         
     def _load_test_cases(self) -> Dict[str, Any]:
         """Load test cases from JSON file."""
+        # Note: self.test_cases_file is now typically 'eval/test_cases.json'
+        # which correctly resolves relative to the CWD (project root).
         with open(self.test_cases_file, 'r') as f:
             return json.load(f)
     
@@ -276,8 +279,8 @@ def main():
     parser = argparse.ArgumentParser(description="Run evaluation harness")
     parser.add_argument("--test-id", help="Run specific test case")
     parser.add_argument("--report", action="store_true", help="Generate report")
-    parser.add_argument("--test-file", default="test_cases.json", 
-                       help="Path to test cases file")
+    parser.add_argument("--test-file", default="eval/test_cases.json", # <--- MODIFIED LINE
+                        help="Path to test cases file")
     
     args = parser.parse_args()
     
